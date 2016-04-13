@@ -1,0 +1,14 @@
+port: 3003
+
+api:
+  url: http://localhost:3001/
+
+available-logs:
+  - dataset: mapwarper
+    step: transform
+
+  - dataset: streets-addresses
+    step: infer
+
+  - dataset: tgn-geonames
+    step: infer
