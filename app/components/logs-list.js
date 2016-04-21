@@ -30,13 +30,12 @@ function reverseSortDirection(sortDir) {
 }
 
 const SortFilterHeaderCell = React.createClass({
-
   render: function() {
     var sortDir = this.props.sortDir
     var children = this.props.children
     return (
       <Cell>
-        <a onClick={this.onSortChange}>
+        <a onClick={this.onSortChange} href='javascript:void(0)'>
           {children} {sortDir ? (sortDir === SortTypes.DESC ? '↓' : '↑') : ''}
         </a>
         <div>
