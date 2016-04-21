@@ -19,12 +19,12 @@ const Renderer = {
 
   columnWidth: (column) => columnWidths[column],
 
-  cell: (column, value) => {
+  cell: (column, value, row) => {
     if (column === 'id') {
       return value
     } else if (column === 'nyplDigitalId') {
       return (
-        <a href={`http://maps.nypl.org/warper/maps/${value}`} target='_blank'>
+        <a href={`http://maps.nypl.org/warper/maps/${row.id}`} target='_blank'>
           <img src={`http://images.nypl.org/?t=t&id=${value}`} />
         </a>
       )

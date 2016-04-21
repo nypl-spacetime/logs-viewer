@@ -5,8 +5,8 @@ import {Table, Column, Cell} from 'fixed-data-table';
 
 import Filters from './filters'
 
-import './logs-list.scss'
 import '../../node_modules/fixed-data-table/dist/fixed-data-table.css'
+import './logs-list.scss'
 
 var Renderers = {}
 function requireAll(r) {
@@ -91,6 +91,7 @@ const LogsList = React.createClass({
   render: function() {
     const rowHeight = 30
     const totalWidth = 1000
+    const totalHeight = this.state.totalHeight
     const columns = Object.keys(this.props.logs[0])
     const columnCount = columns.length
 
@@ -112,12 +113,12 @@ const LogsList = React.createClass({
           }}
           rowsCount={this.state.sortedAndFilteredIndexes.length}
           width={totalWidth}
-          height={this.state.totalHeight}
+          height={totalHeight}
           headerHeight={rowHeight * 2}>
           { columns.map((column, i) => (
             <Column
               key={i}
-              width={renderer.columnWidth(column, columnCount, totalWidth)}
+              width={renderer.columnWidth(column, columnCount, totalWidth) || 250}
               header={<SortFilterHeaderCell
                 onSortChange={this.onSortChange}
                 onFilterChange={this.onFilterChange}
@@ -125,13 +126,16 @@ const LogsList = React.createClass({
                 sortDir={this.state.colSortDirs[column]}>
                 {renderer.header(column)}
               </SortFilterHeaderCell>}
-              cell={({rowIndex}) => (
-                <Cell
-                  className='log-cell'
-                  key={`${i}-${column}`} >
-                  {renderer.cell(column, this.props.logs[this.state.sortedAndFilteredIndexes[rowIndex]][column])}
-                </Cell>
-              )}
+              cell={({rowIndex}) => {
+                var row = this.props.logs[this.state.sortedAndFilteredIndexes[rowIndex]]
+                return (
+                  <Cell
+                    className='log-cell'
+                    key={`${i}-${column}`} >
+                    {renderer.cell(column, row[column], row)}
+                  </Cell>
+                )
+              }}
             />
           )) }
         </Table>
