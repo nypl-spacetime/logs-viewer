@@ -39,7 +39,8 @@ const App = React.createClass({
             <span></span>
               <select ref='selectedLog' onChange={this.changeLogs}>
                 { this.state.availableLogs.map((log, i) => {
-                  return <option key={i} value={i}>{log.dataset} - {log.step}</option>
+                  var selected = log.dataset === this.state.dataset && log.step === this.state.step
+                  return <option key={i} value={i} selected={selected}>{log.dataset} - {log.step}</option>
                 }) }
               </select>
           </div>
