@@ -2,4 +2,4 @@
 
 Space/Time ETL Logs
 
-http://spacetime.nypl.org/log-viewer
+http://spacetime.nypl.org/logs-viewer
