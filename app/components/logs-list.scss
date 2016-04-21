@@ -11,11 +11,13 @@
   width: 200px;
 }
 
-.logs-list-row ul {
+.logs-list-logs {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-.logs-list-row ul code {
+.logs-list-logs code {
   padding: .2rem .5rem;
   margin: 0 .2rem;
   font-size: 90%;
@@ -25,6 +27,79 @@
   border-radius: 4px;
 }
 
-.logs-list-row ul li {
+.logs-list-logs li {
   margin-bottom: 1em;
 }
+
+.log-cell ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.log-cell ul li {
+  margin-bottom: 10px;
+  line-height: 1.5em;
+}
+
+code {
+  padding: .2rem .5rem;
+  margin: 0 .2rem;
+  font-size: 90%;
+  white-space: nowrap;
+  background: #F1F1F1;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px;
+}
+
+
+//
+// .pagination ul {
+//   display: flex;
+//   padding-left: 15px;
+//   padding-right: 15px;
+// }
+//
+// .pagination li {
+//   display: inline-block;
+// }
+//
+// .pagination li a {
+//   display: inline-block;
+//   padding: 3px;
+//   border-style: solid;
+//   border-color: black;
+//   border-width: 1px;
+//   margin: 0 2px;
+//   cursor: pointer;
+//   text-align: center;
+//
+//   user-select: none;
+//   -webkit-user-select: none;
+//   -moz-user-select: none;
+//   -khtml-user-select: none;
+//   -ms-user-select: none;
+// }
+//
+// .pagination li:not(.previous):not(.next) a {
+//   width: 25px;
+// }
+//
+// .pagination li.disabled a {
+//   opacity: 0.2;
+//   cursor: default;
+// }
+//
+// .pagination li.active a {
+//   border-color: red;
+// }
+//
+// .pagination .break {
+//   text-align: center;
+//   cursor: default;
+//   border: none;
+//   width: 25px;
+//   display: inline-block;
+//   padding: 3px;
+//
+// }

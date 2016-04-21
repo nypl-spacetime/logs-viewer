@@ -1,14 +1,14 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React from 'react'
+import { render } from 'react-dom'
 
-import App from './app';
+import App from './app'
 
-import './index.scss';
+import './index.scss'
 
-var api = __CONFIG__.api;
-var availableLogs = __CONFIG__['available-logs'];
+const api = __CONFIG__.api
+const initialLogs = __CONFIG__['initial-logs']
 
 render(
-  <App api={api} availableLogs={availableLogs} />,
+  <App api={api} initialLogs={initialLogs}/>,
   document.getElementById('app')
 );
