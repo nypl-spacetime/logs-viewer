@@ -23,7 +23,7 @@ requireAll(require.context('./datasets/', true, /\.js$/))
 var SortTypes = {
   ASC: 'ASC',
   DESC: 'DESC',
-};
+}
 
 function reverseSortDirection(sortDir) {
   return sortDir === SortTypes.DESC ? SortTypes.ASC : SortTypes.DESC;
@@ -89,6 +89,7 @@ const LogsList = React.createClass({
 
   render: function() {
     const rowHeight = 30
+    const rowsCountHeight = 30
     const totalWidth = 1000
     const totalHeight = this.state.totalHeight
     const columns = Object.keys(this.props.logs[0])
@@ -102,17 +103,28 @@ const LogsList = React.createClass({
       renderer = Object.assign(renderer, Renderers[dataset][step])
     }
 
+    const filteredCount = this.state.sortedAndFilteredIndexes.length
+    const totalCount = this.state.allIndexes.length
+
+    var totalCountStr = ''
+    if (filteredCount !== totalCount) {
+      totalCountStr = `(${totalCount} total)`
+    }
+
     return (
       <div>
+        <div className='rows-count' style={{height: rowsCountHeight}}>
+          {this.state.sortedAndFilteredIndexes.length} items {totalCountStr}
+        </div>
         <Table
           rowHeight={rowHeight}
           rowHeightGetter={(rowIndex) => {
             var row = this.props.logs[this.state.sortedAndFilteredIndexes[rowIndex]]
             return renderer.rowHeight(row, rowHeight)
           }}
-          rowsCount={this.state.sortedAndFilteredIndexes.length}
+          rowsCount={filteredCount}
           width={totalWidth}
-          height={totalHeight}
+          height={totalHeight - rowsCountHeight}
           headerHeight={rowHeight * 2}>
           { columns.map((column, i) => (
             <Column
