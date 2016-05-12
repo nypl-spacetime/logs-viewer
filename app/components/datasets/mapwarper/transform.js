@@ -2,7 +2,7 @@ import React from 'react'
 
 const columns = {
   id: 'Map ID',
-  nyplDigitalId: 'Preview',
+  nyplDigitalId: 'Image ID',
   logs: 'Logs'
 }
 
@@ -13,7 +13,7 @@ const columnWidths = {
 }
 
 const Renderer = {
-  rowHeight: (row, lineHeight) => 170,
+  rowHeight: (row, lineHeight) => 185,
 
   header: (column) => columns[column],
 
@@ -24,9 +24,14 @@ const Renderer = {
       return value
     } else if (column === 'nyplDigitalId') {
       return (
-        <a href={`http://maps.nypl.org/warper/maps/${row.id}`} target='_blank'>
-          <img src={`http://images.nypl.org/?t=t&id=${value}`} />
-        </a>
+        <div>
+          <div>
+            <a href={`http://digitalcollections.nypl.org/items/image_id/${value}`} target='_blank'>{value}</a>
+          </div>
+          <a href={`http://maps.nypl.org/warper/maps/${row.id}`} target='_blank'>
+            <img src={`http://images.nypl.org/?t=t&id=${value}`} />
+          </a>
+        </div>
       )
     } else if (column === 'logs') {
       return (
